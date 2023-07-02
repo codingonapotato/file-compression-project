@@ -1,14 +1,18 @@
 #include "../include/console.h"
 #include <iostream>
 #include <string>
-using namespace std;
+#include <vector>
 
 void Console::init() {
-    string input;
-    cout << "Please input your name: " << endl;
-    getline(cin, input);
-    cout << "Hi there: " << input << " thank you for using this service today!" << endl;
-    cout << "Task Successfully completed :D" << endl;
-    cerr << "This is an error message" << endl;
-    clog << "This is a logged messsage" << endl;
+    // in theory should be safe from buffer-overflows since strings are heap-allocated (when it gets too big)
+    std::cout << "Thank you for using this file compression utility tool! What would you like to do today?" << std::endl;
+
+    std::vector<std::string> startingOptions{"Compress", "Decompress", "Quit"};
+    for (std::string option : startingOptions) {
+        std::cout << option << std::endl;
+    }
+
+    std::string input;
+    std::getline(std::cin, input);
+
 }
